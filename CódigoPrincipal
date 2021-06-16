@@ -1,0 +1,98 @@
+from os import system
+import os
+
+myList = []
+
+
+def Menu():
+    
+    system('clear')
+    print("+-------------------------------+")
+    print("+          Meus usuários        +")
+    print("+-------------------------------+")
+    print("+-------------------------------+")
+    print("+-----      1.- Adicionar  -----+")
+    print("+-----      2.- Deletar    -----+")
+    print("+-----      3.- Sair       -----+")
+    print("+-------------------------------+")
+
+
+def printList():
+    for x in myList:
+            index = myList.index(x)
+            print("+", end=" ")
+            print(index + 1 , x , sep=" -> ")
+
+
+
+
+k = 1
+myList = []
+
+while k > 0:
+    Menu()
+    
+    
+    numberToch = int(input())       
+    system('clear')
+
+
+    if numberToch == 1:
+        print("+-------------------------------+")
+        print("+           Adicionar           +")
+        print("+-------------------------------+")
+        print("+           Usuários            +")
+        printList()
+        print("+-------------------------------+")
+        
+        Item = input("| Nome : ")
+        myList.append(Item)
+        os.system("useradd -m " + Item) 
+        os.system("passwd " + Item)
+
+        print("+-------------------------------+")
+        
+        
+        system('clear')
+
+        print("+-------------------------------+")
+        print("+     Usuários atualizados      +")
+        print("+-------------------------------+")
+        printList()
+        print("+-------------------------------+")
+
+        print()
+        input("Aperte 'Enter' voltar ao menu")
+
+
+    if numberToch == 2:
+        print("+-------------------------------+")
+        print("+           Deletar             +")
+        print("+-------------------------------+")
+        print("+          Usuários             +")
+        print("+-------------------------------+")
+        printList()
+        print("+-------------------------------+")
+
+        Item = int(input("+ Número do usuário a deletar : "))
+        
+        os.system("userdel " + myList[Item - 1])
+
+        print("+-------------------------------+")
+        myList.pop(Item - 1)
+        system('clear')
+        print("+-------------------------------+")
+        print("+        Usuário deletado       +")
+        print("+-------------------------------+")
+        print("+            Usuários           +")
+        print("+-------------------------------+")
+        printList()
+        print("+-------------------------------+")
+        print()
+        input("Aperte 'Enter' voltar ao menu")
+        
+    if numberToch == 3:
+        
+        system('clear')
+        k= -10
+        
